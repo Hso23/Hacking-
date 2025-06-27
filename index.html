@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Security Breach</title>
+  <style>
+    body {
+      background-color: black;
+      color: red;
+      font-family: 'Courier New', monospace;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      text-align: center;
+    }
+    h1 { font-size: 3em; }
+    #countdown { font-size: 2em; color: white; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>⚠️ YOUR DEVICE HAS BEEN HACKED ⚠️</h1>
+  <p>Your device will be formatted in:</p>
+  <div id="countdown">10 seconds</div>
+  <audio id="alarm" src="alarm.mp3" preload="auto"></audio>
+
+  <script>
+    let time = 10;
+    const el = document.getElementById('countdown');
+    const alarm = document.getElementById('alarm');
+    const timer = setInterval(() => {
+      time--;
+      el.textContent = time + " seconds";
+      if (time <= 0) {
+        clearInterval(timer);
+        el.textContent = "Formatting started...";
+        alarm.play();
+      }
+    }, 1000);
+  </script>
+</body>
+</html>
